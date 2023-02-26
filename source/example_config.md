@@ -41,7 +41,7 @@ Some environments may need extra parameters, which should be added here.
 Basic and extra parameters for value and policy function. 
 
 
-- `value_func_name` (str): value function structure, depended on the  used algorithm
+- `value_func_name` (str): value function structure, depended on the  used algorithm, refer to
 - `algorithm` (str): the name of the reinforcement learning algorithm to use
 - `enable_cuda` (bool): whether to use CUDA for computation
 - `seed` (Optional[int]): assign the global seed for training, using a 
