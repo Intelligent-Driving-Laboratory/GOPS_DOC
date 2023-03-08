@@ -14,9 +14,12 @@ Welcome to GOPS's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   introduction
    example_config
    quickstart
    api_reference
+   env
+   simulink
 
    
 
