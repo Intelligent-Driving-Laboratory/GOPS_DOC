@@ -140,3 +140,5 @@ cython_debug/
 # Sphinx doc
 build/
 source/code/
+# Sphinx source files
+code/
