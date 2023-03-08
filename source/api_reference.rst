@@ -7,7 +7,7 @@
 
 
 
-GOPS API Documentation
+API Documentation
 ================================
 
 .. toctree::
@@ -15,8 +15,7 @@ GOPS API Documentation
    :caption: Contents:
 
    environment
-
-   
+   algorithm  
 
    
    
