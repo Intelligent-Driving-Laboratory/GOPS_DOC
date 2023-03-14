@@ -40,20 +40,78 @@ Some environments may need extra parameters, which should be added here.
 ## Approximate Function Parameters
 Basic and extra parameters for value and policy function. 
 
-
-- `value_func_name` (str): value function structure, depended on the  used algorithm, refer to
-- `algorithm` (str): the name of the reinforcement learning algorithm to use
-- `enable_cuda` (bool): whether to use CUDA for computation
-- `seed` (Optional[int]): assign the global seed for training, using a 
+- `value_func_name` (str): value function structure, depended on the used algorithm: `StateValue`, `ActionValue`, `ActionValueDis`, `ActionValueDistri`
+- `value_func_type` (str): type of value function, depended on the used algorithm: `MLP`, `CNN`, `CNN_SHARED`, `RNN`, `POLY`, `GAUSS`
+- `value_hidden_sizes` (list): the size of hidden layers in value function
+- `value_hidden_activation` (str): the activation function for hidden layers in value function: `relu`, `gelu`, `elu`, `selu`, `sigmoid`, `tanh`
+- `value_output_activation` (str): the activation function for output in value function: `linear`, `tanh`
+- `value_conv_type` (str): the type of convolution if `CNN` is used as value function: `type_1`, `type_2`
+- `policy_func_name` (str): policy function structure, depended on the used algorithm: `None`, `DetermPolicy`, `FiniteHorizonPolicy`, `StochaPolicy`
+- `policy_func_type` (str): type of policy function, depended on the used algorithm: `MLP`, `CNN`, `CNN_SHARED`, `RNN`, `POLY`, `GAUSS`
+- `policy_act_distribution` (str): the type of distribution for policy actions: `default`, `TanGaussDistribution`, `GaussDistribution`
+- `policy_hidden_sizes`(list): the size of hidden layers in policy function
+- `policy_hidden_activation` (str): the activation function for hidden layers in policy function: `relu`, `gelu`, `elu`, `selu`, `sigmoid`, `tanh`
+- `policy_output_activation` (str): the activation function for output in policy function: `linear`, `tanh`
+- `policy_conv_type` (str): the type of convolution if `CNN` is used as policy function: `type_1`, `type_2`
+- `policy_num_kernel` (int): the number of kernels if `GAUSS` is used as policy function
+- `policy_degree` (int): degree of policy function if `POLY` is used as policy function
+- `policy_add_bias` (bool): whether to add 0 degree term is `POLY` is used as policy function: `True`, `False`
 
 ##  RL Algorithm Parameters
+Basic and extra parameters for algorithm. 
+
+- `value_learning_rate` (float): learning rate of value iteration
+- `policy_learning_rate` (float): learning rate of policy iteration
+
+For some RL algorithms, extra parameters need to be set. Take DSAC as an example:
+```bash
+parser.add_argument("--value_learning_rate", type=float, default=1e-3)
+parser.add_argument("--policy_learning_rate", type=float, default=1e-3)
+# special parameter
+parser.add_argument("--alpha_learning_rate", type=float, default=1e-3)
+parser.add_argument("--gamma", type=float, default=0.99)
+parser.add_argument("--tau", type=float, default=0.2)
+parser.add_argument("--alpha", type=float, default=0.2)
+parser.add_argument("--auto_alpha", type=bool, default=True)
+parser.add_argument("--delay_update", type=int, default=2)
+parser.add_argument("--TD_bound", type=float, default=10)
+parser.add_argument("--bound", default=True)
+```
+Except two basic parameters, many extra parameters are also needed to be set, the detailed meaning of each can be found in the related paper. 
 
 ## Trainer Parameters
+Basic and extra parameters for trainer. 
 
+- `trainer` (str): the type of trainer: `off_serial_trainer`, `off_async_trainer`, `off_sync_trainer`, `on_serial_trainer`, `on_sync_trainer`
+- `max_iteration` (int): the number of max iteration
+- `ini_network_dir` (str): path of initial networks
+- `num_algs` (int): the number of algorithms if async trainer is used
 ## Buffer Parameters
+Basic and extra parameters for buffer. 
 
+- `buffer_name` (str): the name of buffer to use: `replay_buffer`, `prioritized_replay_buffer`
+- `buffer_warm_size` (int): size of collected samples before training
+- `buffer_max_size` (int): max size of replay buffer
+- `replay_batch_size` (int): batch size of replay samples from buffer
+- `sample_interval` (int): period of sampling
 ## Sampler Parameters
+Basic and extra parameters for sampler. 
+
+- `sample_name` (str): the name of sampler to use: `off_sampler`, `on_sampler`
+- `sample_batch_size` (int): batch size of sampler for buffer store
+- `noise_params` (dict): add noise to action for better exploration, only used for continuous action space
 
 ## Evaluator Parameters
+Basic and extra parameters for evaluator. 
+
+- `evaluator_name` (str): the name of evaluator to use: `evaluator`, `evaluator_filter`
+- `num_eval_episode` (int): the number of episodes for evaluation
+- `eval_interval` (int): period of every evaluation episode
+- `eval_save` (bool): whether to save evaluation data: `True`, `False`
 
 ## Data Saving Parameters 
+Basic and extra parameters for data saving. 
+
+- `save_folder` (str): directory of data to save
+- `appfunc_save_interval` (int): save value/policy every N updates
+- `log_save_interval` (int): save key information every N updates
