@@ -35,6 +35,8 @@ This parameter will be ignored if `is_init_info` is `False`. This parameter will
 - `action_noise_type` (str): (Optional) Type of action noise. Valid value: {"normal", "uniform", `None`}. If `None`, no noise is added to the action, otherwise random noises either normally or uniformly distributed will be introduced. Default to `None`.
 - `action_noise_data` (list): (Optional) A list specifying the parameters for the noise distribution. This should contain two lists, the length of which should both equals the dimension of actions. For normally distributed noise, the first list represents the mean and the second list the standard deviation. For uniformly distributed noise, the first list represents the lower bound and the second list the upper deviation. Default to `None`.
 
+
+.. _usage-example:
 ## Usage Example
 A template for using `PolicyRunner` is offered in `gops.example_run.template_run_environ_alg.py`, showing the possible setting of all the parameters. The most complicated part is the setting of `opt_args`, which will be illustrated in details here.
 

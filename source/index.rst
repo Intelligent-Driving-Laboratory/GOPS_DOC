@@ -12,6 +12,7 @@ Welcome to GOPS's documentation!
 
    introduction
    example_config
+   simulation_config
    env
    simulink
    api_reference

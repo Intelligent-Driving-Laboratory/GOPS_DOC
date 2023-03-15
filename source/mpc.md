@@ -29,4 +29,4 @@ This page illustrates the meaning of the parameters for instantiating a `gops.sy
 - `mode` (Optional[str]): Specify the method to be used to solve optimal control problem. Valid value: {"shooting", "collocation"}. Default to `"collocation"`.
 
 ## Usage
-The MPC controller is meant to be used by a `gops.sys_simulator.sys_run.PolicyRunner`, for offering an optimal baseline while simulating trained policies. See [Simulation Configuration](./simulation.md) for details.
+The MPC controller is meant to be used by a `gops.sys_simulator.sys_run.PolicyRunner`, for offering an optimal baseline while simulating trained policies. See [Simulation Configuration](./simulation_config.md) for details.
