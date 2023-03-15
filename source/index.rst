@@ -12,10 +12,11 @@ Welcome to GOPS's documentation!
 
    introduction
    example_config
-   quickstart
-   api_reference
    env
    simulink
+   api_reference
+   about_idlab
+
 
    
 
