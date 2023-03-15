@@ -14,6 +14,7 @@ Welcome to GOPS's documentation!
    example_config
    env
    simulink
+   py2slx
    api_reference
    about_idlab
 
