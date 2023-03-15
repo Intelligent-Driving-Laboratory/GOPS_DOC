@@ -37,6 +37,22 @@ See [](simulink).
 
 ### Optimal control environments
 
+#### Environment creation rules
+
+All environments are created by `gops.create_pkg.create_env.create_env()` or `gops.create_pkg.create_env_model.create_env_model()` depending on whether it is in data version or model version. These two functions first import an environment file, which should be named as "`env_id`_data.py" or "`env_id`_model.py", where `env_id` is the environment name specified in training configurations. Note that all environments should have a data version for data sampling while the model version is needed only for model-based algorithms. Then, there are two methods to enable the create functions to find the environment:
+
+- Define a function `env_creator()` or `env_model_creator()` in the file that takes the environment name and returns an instance of the environment.
+- Define an environemnt class in the file with the same name as `env_id` but in Pascal naming convention (PascalCase).
+
+For example, if `env_id`=`"pyth_veh2dofconti"`, then the data version environment file should be named as `pyth_veh2dofconti_data.py`. If using the first creation method, assume that the environment class name is `SimuVeh2dofconti`, then there should be such a function in the file:
+
+```python
+def env_creator(**kwargs):
+    return SimuVeh2dofconti(**kwargs)
+```
+
+If using the second creation method, then there should be an environment class named as `PythVeh2dofconti`. If neither of the two requirements are satisfied, the environment create function will raise an error.
+
 #### Naming conventions
 
 Class names should be named in Pascal naming convention (PascalCase), which means that the first letter of each word should be capitalized and the rest of the letters should be lowercase. Specifically, for abbreviations, all letters should be capitalized.
@@ -69,7 +85,7 @@ Optimal control environments need specification of the range and distribution of
 
 `train_space`: `Optional[Sequence]` = `None`. The range of the initial state in training mode.
 
-`initial_distribution`: `str` = `"uniform"`. The type of initial state distribution, in ['uniform', 'normal'].
+`initial_distribution`: `str` = `"uniform"`. The type of initial state distribution, in ["uniform", "normal"].
 
 #### Additional information
 

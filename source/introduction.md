@@ -28,22 +28,19 @@ GOPS currently supports the following algorithms:
 
 GOPS has the following features:
 
-- Adopt a highly modular structure that allows for easy secondary development of environments and algorithms.
+- Adopt a **highly modular structure** that allows for easy secondary development of environments and algorithms.
 
-- Support mainstream model-free and model-based, direct and indirect reinforcement learning algorithms.
+- Support mainstream **model-free** and **model-based**, **direct** and **indirect** reinforcement learning algorithms.
 
-- Support both serial and parallel training modes.
+- Support both **serial** and **parallel** training modes.
 
-- Support handling of special industrial control issues, such as explicit policies, state constraints, model uncertainties, etc.
+- Support handling of special industrial control issues, such as **explicit policies**, **state constraints**, **model uncertainties**, etc.
 
 - Support conversion from **Matlab/Simulink** models to GOPS-compatible environments and from GOPS-learned policies back to Matlab/Simulink.
 
 - Support **model predictive control (MPC)** for environments with analytical models.
 
-- Support evaluation of state and action curves and comparison of different policies.
-
-
-粗体
+- Support evaluation of **state and action curves** and comparison of different policies.
 
 ## Installation
 
