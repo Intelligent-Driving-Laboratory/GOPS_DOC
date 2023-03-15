@@ -5,13 +5,13 @@ This doc illustrates how to set arguments in training process. There are several
 GOPS use `argparse` package to pass and parse arguments, the arguments will be passed to ```init_args() ``` function in `gops/utils/init_args.py` to create corresponding components such like sampler or trainer.
 
 :::{important}
-Some arguments are coupling with others. Change them separately may cause error or incorrect results. **Please carefully read this doc before make any change.** 
+Some arguments are coupling with others. Change them separately may cause error or incorrect results. **Please carefully read this doc before making any change.** 
 ::: 
 
 
 
 ## Environment Variables
-`OMP_NUM_THREADS` : This environment variable controls the num  of threads of each process when using `ray` package for parallel computing. The default value is `1`. 
+`OMP_NUM_THREADS` : This environment variable controls the num of threads of each process when using `ray` package for parallel computing. The default value is `1`. 
 
 
 ## User Parameters
