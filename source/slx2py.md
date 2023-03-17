@@ -1,11 +1,10 @@
 (simulink)=
-# Simulink Conversion Tools
+# Simulink to GOPS
 
-## General introduction
-
+GOPS uses slxpy to convert Simulink models to Python environments.
 Slxpy is a toolchain for seamlessly generating efficient Simulink-to-Python binding and gym-like environment wrapper.
 
-### Documentation structure
+## Documentation structure
 The sidebar on the right roughly corresponds to your learning process. Follow instructions in Prerequisities, Installation and Quick start to use this package.
 
 For Simulink modeling guide, see Modeling guide.  

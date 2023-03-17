@@ -13,20 +13,10 @@ Welcome to GOPS's documentation!
    introduction
    example_config
    simulation_config
-   env
-   simulink
-   py2slx
+   slx_conversion_tools
    api_reference
+   benchmark
    about_idlab
 
 
    
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

@@ -19,8 +19,8 @@ The elements of `log_policy_dir_list` and `trained_policy_iteration_list` have a
 :::{note}
 Likewise, the elements of `legend_list` also correspond to those of `log_policy_dir_list` in an one-to-one manner. 
 ::: 
-- `constrained_env` (bool): (Optional) A boolean indicating whether the simulating environment is a constrained environment. For example, for policies trained on the environment `gops.env.env_ocp.pyth_veh3dofconti_surrcstr_data.SimuVeh3dofcontiSurrCstr` which contains constraints, this should be set to `True`. Default to `None`.
-- `is_tracking` (bool): (Optional) A boolean indicating whether the simulating environment is a tracking problem. For example, for policies trained on the environment `gops.env.env_ocp.pyth_veh3dofconti_data.SimuVeh3dofconti` where the goal is to control a vehicle following some reference paths, this should be set to `True`. Default to `None`.
+- `constrained_env` (bool): (Optional) A boolean indicating whether the simulating environment is a constrained environment. For example, for policies trained on the environment `gops.env.env_ocp.pyth_veh3dofconti_surrcstr_data.SimuVeh3dofcontiSurrCstr` which contains constraints, this should be set to `True`. Default to `False`.
+- `is_tracking` (bool): (Optional) A boolean indicating whether the simulating environment is a tracking problem. For example, for policies trained on the environment `gops.env.env_ocp.pyth_veh3dofconti_data.SimuVeh3dofconti` where the goal is to control a vehicle following some reference paths, this should be set to `True`. Default to `False`.
 - `use_dist` (bool): (Optional) A boolean indicating whether the simulating environment has adversarial actions. Default to `False`.
 - `dt` (float): (Optional) Time interval between steps. If `None`, the result figures will use `Time step` for x-axis. Otherwise, the result figures will use `Time (s)` for x-axis, and the transformation from time steps to time is characterized by `dt`.
 - `is_init_info` (bool): (Optional) Whether to customize initial information. Default to `False`.

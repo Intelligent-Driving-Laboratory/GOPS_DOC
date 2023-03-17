@@ -1,6 +1,6 @@
-# GOPS validation bridge
-Put GOPS policy back into Simulink for closed-loop validation, with minimum effort.
+# GOPS to Simulink
 
+Put the trained policy back into Simulink for closed-loop verification and deployment.
 ## Prerequisites
 1. MATLAB with Simulink.
 

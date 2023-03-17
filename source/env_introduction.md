@@ -1,6 +1,6 @@
-# Environment
-## Overview
-The environment module contains a series of pre-built environment models with reward signals, each corresponding to a standard optimal control problem. Users also have the option to create their own environments and add them to the GOPS library. Additionally, GOPS has a user-friendly tool that can transform Simulink models into GOPS environments to train a control policy. After that, the tool can convert the trained policy into an S-function and send it back to Matlab/Simulink for performance validation or controller deployment. 
+# Overview
+
+The environment module contains a series of pre-built environment models with reward signals. Users also have the option to create their own environments and add them to the GOPS library. Additionally, GOPS has a user-friendly tool that can transform Simulink models into GOPS environments to train a control policy. After that, the tool can convert the trained policy into an S-function and send it back to Matlab/Simulink for performance validation or controller deployment. 
 
 All environments in GOPS follow a uniform Gym-style interface, which contains an observation space, an action space, a reset function, and a step function. The observation space and action space specify the dimensions, bounds, and data types of observation (i.e., state) and action. The reset function generates an initial state randomly with a user-specified state distribution. The step function takes action as input, runs the environment one step forward, and returns the next observation, reward, and episode termination signal.
 

@@ -20,7 +20,7 @@ Key parameters in user level:
 - `env_id` (str): the ID of the environment
 - `algorithm` (str): the name of the reinforcement learning algorithm to use
 - `enable_cuda` (bool): whether to use CUDA for computation
-- `seed` (Optional[int]): assign the global seed for training, using a random value by default 
+- `seed` (int): (Optional): assign the global seed for training, using a random value by default 
 
   
 ## Environment Parameters
