@@ -42,20 +42,24 @@ Basic and extra parameters for value and policy function.
 
 - `value_func_name` (str): value function structure, depended on the used algorithm: `StateValue`, `ActionValue`, `ActionValueDis`, `ActionValueDistri`
 - `value_func_type` (str): type of value function, depended on the used algorithm: `MLP`, `CNN`, `CNN_SHARED`, `RNN`, `POLY`, `GAUSS`
-- `value_hidden_sizes` (list): the size of hidden layers in value function
-- `value_hidden_activation` (str): the activation function for hidden layers in value function: `relu`, `gelu`, `elu`, `selu`, `sigmoid`, `tanh`
-- `value_output_activation` (str): the activation function for output in value function: `linear`, `tanh`
-- `value_conv_type` (str): the type of convolution if `CNN` is used as value function: `type_1`, `type_2`
 - `policy_func_name` (str): policy function structure, depended on the used algorithm: `None`, `DetermPolicy`, `FiniteHorizonPolicy`, `StochaPolicy`
 - `policy_func_type` (str): type of policy function, depended on the used algorithm: `MLP`, `CNN`, `CNN_SHARED`, `RNN`, `POLY`, `GAUSS`
 - `policy_act_distribution` (str): the type of distribution for policy actions: `default`, `TanGaussDistribution`, `GaussDistribution`
-- `policy_hidden_sizes`(list): the size of hidden layers in policy function
-- `policy_hidden_activation` (str): the activation function for hidden layers in policy function: `relu`, `gelu`, `elu`, `selu`, `sigmoid`, `tanh`
-- `policy_output_activation` (str): the activation function for output in policy function: `linear`, `tanh`
-- `policy_conv_type` (str): the type of convolution if `CNN` is used as policy function: `type_1`, `type_2`
-- `policy_num_kernel` (int): the number of kernels if `GAUSS` is used as policy function
-- `policy_degree` (int): degree of policy function if `POLY` is used as policy function
-- `policy_add_bias` (bool): whether to add 0 degree term is `POLY` is used as policy function: `True`, `False`
+
+:::{note}
+Some arguments are coupling with others. Change them separately may cause error or incorrect results.   
+::: 
+
+There are 3 main ways to check for such errors. 
+- You can check the `init_args()` function in `gops/utils/init_args.py` as all arguments will be passed here to create corresponding components. 
+- For every type of function, you can find the complete configuration in `gops/appfunc`. 
+- Different choice of the function type means specific parameters need to be set, details of which can be found in `get_appfunc_dict` function in `gops/utils/common_utils`. 
+
+For example, if the function type is `MLP` or `RNN`, the following parameters need to be set:
+- `hidden_sizes` (list): the size of hidden layers in value or policy function.
+- `hidden_activation` (str): the activation function for hidden layers in value or policy function: `relu`, `gelu`, `elu`, `selu`, `sigmoid`, `tanh`
+- `output_activation` (str): the activation function for output in value or policy function: `linear`, `tanh`
+
 
 ##  RL Algorithm Parameters
 Basic and extra parameters for algorithm. 
@@ -63,7 +67,11 @@ Basic and extra parameters for algorithm.
 - `value_learning_rate` (float): learning rate of value iteration
 - `policy_learning_rate` (float): learning rate of policy iteration
 
-For some RL algorithms, extra parameters need to be set. Take DSAC as an example:
+:::{note}
+For some RL algorithms, extra parameters need to be set. Refer to {ref}`algorithm_utils` for detailed information.
+:::
+
+Take DSAC as an example:
 ```bash
 parser.add_argument("--value_learning_rate", type=float, default=1e-3)
 parser.add_argument("--policy_learning_rate", type=float, default=1e-3)
@@ -77,7 +85,6 @@ parser.add_argument("--delay_update", type=int, default=2)
 parser.add_argument("--TD_bound", type=float, default=10)
 parser.add_argument("--bound", default=True)
 ```
-Except two basic parameters, many extra parameters are also needed to be set, the detailed meaning of each can be found in the related paper. 
 
 ## Trainer Parameters
 Basic and extra parameters for trainer. 
@@ -86,6 +93,9 @@ Basic and extra parameters for trainer.
 - `max_iteration` (int): the number of max iteration
 - `ini_network_dir` (str): path of initial networks
 - `num_algs` (int): the number of algorithms if async trainer is used
+- `num_samplers` (int): the number of samplers to use
+- `sample_interval` (int): period of sampling
+
 ## Buffer Parameters
 Basic and extra parameters for buffer. 
 
@@ -93,7 +103,6 @@ Basic and extra parameters for buffer.
 - `buffer_warm_size` (int): size of collected samples before training
 - `buffer_max_size` (int): max size of replay buffer
 - `replay_batch_size` (int): batch size of replay samples from buffer
-- `sample_interval` (int): period of sampling
 ## Sampler Parameters
 Basic and extra parameters for sampler. 
 
