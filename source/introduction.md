@@ -18,8 +18,8 @@ GOPS currently supports the following algorithms:
 - [Distributional Soft Actor-Critic (DSAC)](https://arxiv.org/abs/2001.02811)
 - [Trust Region Policy Optimization (TRPO)](https://arxiv.org/abs/1502.05477)
 - [Proximal Policy Optimization (PPO)](https://arxiv.org/abs/1707.06347)
-- [Infinite-Horizon Approximate Dynamic Programming (INFADP)](https://www.sciencedirect.com/science/article/abs/pii/S0005109812002476)
-- [Finite-Horizon Approximate Dynamic Programming (FHADP)](https://ieeexplore.ieee.org/document/4124940)
+- [Infinite-Horizon Approximate Dynamic Programming (INFADP)](https://link.springer.com/book/10.1007/978-981-19-7784-8)
+- [Finite-Horizon Approximate Dynamic Programming (FHADP)](https://link.springer.com/book/10.1007/978-981-19-7784-8)
 - [Mixed Actor-Critic (MAC)](https://ieeexplore.ieee.org/document/9268413)
 - [Mixed Policy Gradient (MPG)](https://arxiv.org/abs/2102.11513)
 - [Separated Proportional-Integral Lagrangian (SPIL)](https://arxiv.org/abs/2102.08539)
@@ -46,7 +46,7 @@ GOPS has the following features:
 
 GOPS requires:
 1. Windows 7 or greater or Linux.
-2. Python 3.6 or greater (GOPS V1.0 precompiled Simulink models use Python 3.6). We recommend using Python 3.8.
+2. Python 3.6 or greater (GOPS V1.0 precompiled Simulink models use Python 3.8). We recommend using Python 3.8.
 3. (Optional) Matlab/Simulink 2018a or greater.
 4. The installation path must be in English.
 
@@ -76,10 +76,26 @@ python example_run/run_idp_fhadp.py
 You can record a video by setting `save_render=True` in the test file. Here is a video of running a trained policy on the task:
 
 (idpendulum)=
-```{figure} ./idp.mp4
+```{figure} ./figures&videos/idp.mp4
 :alt:
 :align: center
 :width: 600px
+```
+## Cite GOPS
+If you use GOPS in your research, please cite the following paper:
+
+```bibtex
+@article{gops,
+    title={GOPS: A general optimal control problem solver for autonomous driving and industrial control applications},
+    author={Wenxuan Wang, Yuhang Zhang, Jiaxin Gao, Yuxuan Jiang, Yujie Yang, Zhilong Zheng, Wenjun Zou, Jie Li,
+Congsheng Zhang, Wenhan Cao, Genjin Xie, Jingliang Duan, Shengbo Eben Li}
+    journal={Communications in Transportation Research},
+    volume = {3},
+    pages = {100096},
+    year={2023},
+    issn={2772-4247},
+    doi = {https://doi.org/10.1016/j.commtr.2022.100096},
+    }
 ```
 
 ## Acknowledgment

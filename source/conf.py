@@ -34,7 +34,7 @@ source_suffix = {
 html_theme = 'sphinx_rtd_theme'
 html_theme_options = {
 }
-html_logo = 'logo.png'
+html_logo = 'figures&videos/GOPS_LOGO.png'
 
 html_static_path = ['_static']
 html_css_files = ['custom.css']

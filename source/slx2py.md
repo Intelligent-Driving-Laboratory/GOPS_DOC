@@ -14,7 +14,7 @@ To build for multiple Python versions, try Multi target build.
 
 The flowchart serves as an overview and briefly describes the common workflow for your smoother integration. You could refer to relevant sections in the wiki for details.
 (conversion)=
-```{figure} ./simulink_conversion.png
+```{figure} ./figures&videos/simulink_conversion.png
 :alt: conversion
 :align: center
 :width: 600px

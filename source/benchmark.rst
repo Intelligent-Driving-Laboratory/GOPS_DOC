@@ -5,10 +5,11 @@ Algorithm performance benchmark for Mujoco enviromnents and typical optimal cont
 
 Mujoco Benchmark
 ---------------------
-Every experiment is conducted under 5 random seeds for 1-3M iterations.
+Every experiment is conducted under 5 random seeds for 30M env steps.
 
-.. include:: envs.html
-
+.. raw:: html
+   :file: plot_benchmark/benchmark_run2.html
+   
 Optimal Control Problems
 ---------------------------
 Algorithm performance benchmark for some typical industrial optimal control problems, including Linear Quadratic Regulator (LQR), 
@@ -21,16 +22,16 @@ which is a relatively straightforward optimal control problem that can be solved
 The performance of these algorithms is evaluated based on the degree of similarity between the states and control inputs produced by the learned policies 
 and those of the analytical optimal policy.
 
-.. image:: LQR_1.jpg
+.. image:: figures&videos/LQR_1.jpg
    :width: 45%
 
-.. image:: LQR_2.jpg
+.. image:: figures&videos/LQR_2.jpg
    :width: 45%
 
-.. image:: LQR_3.jpg
+.. image:: figures&videos/LQR_3.jpg
    :width: 45%
 
-.. image:: LQR_4.jpg
+.. image:: figures&videos/LQR_4.jpg
    :width: 45%
 
 
@@ -63,10 +64,10 @@ The tracking performances of serveral algorithms are summarized in the table.
 | Velocity error (m/s)   | 0.068±0.011            | **0.035±0.005**        | 0.039±0.007            |
 +------------------------+------------------------+------------------------+------------------------+
 
-.. image:: Vehicle_1.jpg
+.. image:: figures&videos/Vehicle_1.jpg
    :width: 45%
 
-.. image:: Vehicle_2.jpg
+.. image:: figures&videos/Vehicle_2.jpg
    :width: 45%
 
 
@@ -79,10 +80,10 @@ Constraint Control Problem
 The built-in constraint RL algorithms in GOPS can handle the constraint control problem, as shown in the following mobile robot obstacle avoidance task.
 Notice that the constraint value is minus along the trajectory, which means the robot is able to keep a safe distance from the obstacle.
 
-.. image:: Constraint_1.jpg
+.. image:: figures&videos/Constraint_1.jpg
    :width: 45%
 
-.. image:: Constraint_2.jpg
+.. image:: figures&videos/Constraint_2.jpg
    :width: 45%
 
 
@@ -92,8 +93,8 @@ Robust Control Problem
 GOPS provides robust RL algorithms to ensure acceptable control performance within a certain range of modeling error and disturbance.
 Take active suspension control of a quarter-car system as an example, compared with the no-control situation, the learned policy well attenuates the vibration of the sprung mass.
 
-.. image:: Robust_1.jpg
+.. image:: figures&videos/Robust_1.jpg
    :width: 45%
 
-.. image:: Robust_2.jpg
+.. image:: figures&videos/Robust_2.jpg
    :width: 45%

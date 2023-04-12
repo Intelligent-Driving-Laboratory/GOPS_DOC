@@ -16,7 +16,7 @@ Once an optimal control policy is found, the tool can send it back to Simulink b
 
 
 
-.. image:: convert_process.jpg
+.. image:: figures&videos/convert_process.jpg
    :width: 90%
    :align: center
    :alt:  The pipeline of Simulink-GOPS conversion tool 

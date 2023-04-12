@@ -139,6 +139,11 @@ cython_debug/
 
 # Sphinx doc
 build/
-source/code/
 # Sphinx source files
+source/code/
+source/plot_benchmark/source_data/
+source/plot_benchmark/source_data_run2/
 code/
+*.zip
+
+
