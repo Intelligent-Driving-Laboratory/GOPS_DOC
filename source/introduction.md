@@ -100,3 +100,24 @@ Congsheng Zhang, Wenhan Cao, Genjin Xie, Jingliang Duan, Shengbo Eben Li}
 
 ## Acknowledgment
 We would like to thank all members in Intelligent Driving Laboratory (iDLab), School of Vehicle and Mobility, Tsinghua University for making excellent contributions and providing helpful advices for GOPS.
+
+## Main Contributors
+```Wenxuan Wang, Yuhang Zhang, Jiaxin Gao, Yuxuan Jiang, Yujie Yang, Zhilong Zheng,
+Wenjun Zou, Jie Li, Congsheng Zhang, Wenhan Cao, Genjin Xie, Jingliang Duan, Shengbo Eben Li, 
+Hao Sun, Xujie Song, Baiyu Peng, Yuheng Lei, Yinuo Wang, Letian Tao, Tong Liu, Yang Guan, Weixian He,
+```
+The main contributors of GOPS are as follows (in alphabetical order):
+
+- [Wenxuan Wang]()
+- [Yuhang Zhang]()
+- [Jiaxin Gao]()
+- [Yuxuan Jiang]()
+- [Yujie Yang]()
+- [Zhilong Zheng]()
+- [Wenjun Zou]()
+- [Jie Li]()
+- [Wenhan Cao]()
+- [Jingliang Duan]()
+- [Shengbo Eben Li]()
+- [Congsheng Zhang]()
+- [Genjin Xie]()

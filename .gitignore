@@ -143,6 +143,8 @@ build/
 source/code/
 source/plot_benchmark/source_data/
 source/plot_benchmark/source_data_run2/
+source/plot_benchmark/mujoco_curve/
+source/plot_benchmark/result_0419
 code/
 *.zip
 

@@ -11,12 +11,15 @@ from tensorboard.backend.event_processing import event_accumulator
 events_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),'source_data_run2')
 
 # Define the names of the algorithms (which are the names of the folders)
-algorithms = ['DSAC','SAC','TD3','DDPG','PPO','TRPO']
+algorithms = ['DSAC5','SAC','TD3','DDPG','TRPO','PPO']
+on_policy_algorithms = ['PPO','TRPO']
 envs = ['gym_ant', 'gym_halfcheetah', 'gym_hopper', 'gym_humanoid', 'gym_inverteddoublependulum','gym_invertedpendulum','gym_reacher', 'gym_swimmer', 'gym_walker2d']
 # envs = ['gym_swimmer']
 # Define the metrics you want to visusalize
-metrics = ['Evaluation/3. TAR-Collected samples']
-sample_interval = 300_000 # 0.3M
+metrics = ['Evaluation/1. TAR-RL iter']
+sample_interval = 15_000 # 0.3M
+step_fix_factor = 250  # match the step of the on-policy algorithms since they repeat network updates in the same step
+max_record_points = 100 # max_record_points * sample_interval = max RL steps(1.5M)
 # Create a list to hold the data
 data_list = []
 
@@ -59,14 +62,20 @@ for algorithm in algorithms:
                 # Loop through the steps and values for this metric
                 data_length = len(event_dict[metric])
                 alg_tag= algorithm
-                if algorithm == 'DSAC2':
-                    alg_tag = 'M-DSAC'
-                record_points_num = 1
+                if algorithm == 'DSAC5':
+                    alg_tag = 'DSAC'
+                record_points_num = 0
                 for id, e in enumerate(event_dict[metric]):
+                    if record_points_num>= max_record_points:
+                        break
+                    if algorithm in on_policy_algorithms:
+                        step = e.step*step_fix_factor
+                    else:
+                        step = e.step
                     # Add the data to the list
-                    if e.step>= record_points_num*sample_interval:
+                    if step >= record_points_num*sample_interval:
                         
-                        data_list.append({'algorithm': alg_tag,'env':env, 'run': id, 'step': e.step/1_000_000, metric: e.value})
+                        data_list.append({'algorithm': alg_tag,'env':env, 'run': id, 'step': record_points_num*sample_interval/1_000_000, metric: e.value})
                         record_points_num += 1
 
 # Convert the data to a pandas DataFrame
