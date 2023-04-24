@@ -147,5 +147,6 @@ source/plot_benchmark/mujoco_curve/
 source/plot_benchmark/result_0419
 code/
 *.zip
+*.rar
 
 
