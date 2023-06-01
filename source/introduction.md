@@ -53,7 +53,7 @@ GOPS requires:
 You can install GOPS through the following steps:
 ```bash
 # clone GOPS repository
-git clone https://gitee.com/tsinghua-university-iDLab-GOPS/gops
+git clone https://github.com/Intelligent-Driving-Laboratory/GOPS.git
 cd gops
 # create conda environment
 conda env create -f gops_environment.yml
@@ -82,7 +82,7 @@ You can record a video by setting `save_render=True` in the test file. Here is a
 :width: 600px
 ```
 ## Cite GOPS
-If you use GOPS in your research, please cite the following paper:
+If you use GOPS in your research, please cite [the following paper](https://doi.org/10.1016/j.commtr.2023.100096):
 
 ```bibtex
 @article{gops,
@@ -98,11 +98,39 @@ Congsheng Zhang, Wenhan Cao, Genjin Xie, Jingliang Duan, Shengbo Eben Li}
     }
 ```
 
-## Acknowledgment
-We would like to thank all members in Intelligent Driving Laboratory (iDLab), School of Vehicle and Mobility, Tsinghua University for making excellent contributions and providing helpful advices for GOPS.
+## Download GOPS
+You can download the newest version of GOPS from [this page](https://github.com/Intelligent-Driving-Laboratory/GOPS/releases).
 
-## Main Contributors
-The main contributors of GOPS are as follows (in alphabetical order):
+## Contributors
+The contributors of GOPS are as follows:
 
-Baiyu Peng, Congsheng Zhang, Genjin Xie, Hao Sun, Jiaxin Gao, Jie Li, Jingliang Duan, Letian Tao, Shengbo Eben Li, Tong Liu, Wenhan Cao, Wenjun Zou, Wenxuan Wang, Weixian He, Xujie Song, Yang Guan, Yinuo Wang, Yuhang Zhang, Yuheng Lei, Yujie Yang, Yuxuan Jiang, Zhilong Zheng
+**Team Leader**
+
+[Shengbo Eben Li](https://www.researchgate.net/profile/Shengbo-Li-2) leads the development of this project.
+
+
+**Team Members (in alphabetical order)**
+
+[Baiyu Peng](https://baiyu6666.github.io),
+[Congsheng Zhang](https://www.researchgate.net/profile/Congsheng-Zhang),
+[Genjin Xie](https://www.researchgate.net/profile/Xie-Genjin-2),
+[Ziqing Gu](https://scholar.google.com/citations?user=B8Ys1-0AAAAJ).
+[Hao Sun](https://gitee.com/roshandaddy),
+[Jiaxin Gao](https://www.researchgate.net/profile/Jiaxin_Gao5),
+[Jie Li](https://www.researchgate.net/profile/Jie-Li-216),
+[Jingliang Duan](https://www.researchgate.net/profile/Jingliang-Duan),
+[Letian Tao](https://github.com/tlt18),
+[Tong Liu](https://www.researchgate.net/profile/Tong-Liu-94),
+[Wenhan Cao](https:wenhancao.github.io),
+[Wenjun Zou](https://www.researchgate.net/profile/Wenjun-Zou-6),
+[Wenxuan Wang](https://www.researchgate.net/profile/Wenxuan_Wang10),
+[Weixian He](https://github.com/HWXian),
+[Xujie Song](https://www.linkedin.com/in/xujie-song/),
+[Yang Guan](https://www.researchgate.net/profile/Yang-Guan-2),
+[Yinuo Wang](https://github.com/happy-yan),
+[Yuhang Zhang](https://www.researchgate.net/profile/Yuhang-Zhang-27),
+[Yuheng Lei](https://sites.google.com/view/yuhenglei),
+[Yujie Yang](https://yangyujie-jack.github.io/),
+[Yuxuan Jiang](https://github.com/jjyyxx),
+[Zhilong Zheng](https://www.researchgate.net/profile/Zhilong-Zheng-4)
 
