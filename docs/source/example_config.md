@@ -68,7 +68,7 @@ Basic and extra parameters for algorithm.
 - `policy_learning_rate` (float): learning rate of policy iteration
 
 :::{note}
-For some RL algorithms, extra parameters need to be set. Refer to {ref}`algorithm_utils` for detailed information.
+For some RL algorithms, extra parameters need to be set. Refer to `algorithm` module for detailed information.
 :::
 
 Take DSAC as an example:
