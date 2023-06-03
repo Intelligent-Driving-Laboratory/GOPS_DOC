@@ -238,6 +238,7 @@ Both _Variant Source_ and _Multiport Switch_ are sensible choices for switching 
 
 Luckily, entries mentioned above might rarely be used in modeling, especially physics-related ones.
 
+(reference-materials)=
 ### Reference materials
 If you are not familiar with Simulink modeling, you could take a look at [Simulink Onramp](https://www.mathworks.com/learn/tutorials/simulink-onramp.html) tutorial.
 
@@ -421,7 +422,7 @@ Parameter names must be a subset of the Simulink model tunable parameters.
     type = "custom"
     code = "std::fill_n(params.custom, 6, -1);"
 ```
-
+(advanced-wrapping)=
 ### Advanced wrapping
 Some highly costomized needs are non-trivial to cover in a config file.
 Also, going through the whole building process may be inefficient for environment tuning. Instead, you could wrap the `GymEnv` with a Python-class wrapper and implement your logic.
