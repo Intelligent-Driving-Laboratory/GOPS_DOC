@@ -1,26 +1,27 @@
 
 Benchmark
 =======================================
-Algorithm performance benchmark for Mujoco enviromnents and typical optimal control problems.
+GOPS provides algorithm performance benchmark for Mujoco enviromnents and typical optimal control problems.
 
 Mujoco Benchmark
 ---------------------
-Every experiment is conducted under 5 random seeds for 30M env steps.
+This section presents the performance of a series of model-free RL algorithms in GOPS on the Mujoco environments.
+Every experiment is conducted under 5 random seeds for 1.5M RL iterations (30M environment steps).
 
 .. raw:: html
-   :file: plot_benchmark/benchmark_run2.html
+   :file: ./plot_benchmark/benchmark_run2.html
    
 Optimal Control Problems
 ---------------------------
-Algorithm performance benchmark for some typical industrial optimal control problems, including Linear Quadratic Regulator (LQR), 
-tracking problem, constraint control problem, robust control problem. 
+This section presents the performance of several algorithms on typical industrial optimal control problems, including linear quadratic regulator (LQR), 
+tracking problem, constrained control problem, robust control problem. 
 
 LQR
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The figure and table presented depict the performance of various algorithms on the LQR problem with 4 states and 2 control inputs, 
-which is a relatively straightforward optimal control problem that can be solved using analytical methods. 
-The performance of these algorithms is evaluated based on the degree of similarity between the states and control inputs produced by the learned policies 
-and those of the analytical optimal policy.
+The figure and table show how well various algorithms perform on the LQR problem.
+The problem has 4 states and 2 control inputs and can be solved using analytical methods. 
+The algorithms are evaluated based on the relative error between the states and control inputs produced by their learned policies
+and those of the analytical solution.
 
 .. image:: figures&videos/LQR_1.jpg
    :width: 45%
@@ -50,11 +51,10 @@ and those of the analytical optimal policy.
 
 Vehicle Tracking
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The figure and table presented depict the performance of various algorithms on the vehicle tracking problem,
-which is a typical optimal control problem in the field of autonomous driving.
-The training environment is transformed from a official `simulink vehicle model`_ using the convert tools in GOPS.
-The trained policy is then sent back to the simulink model to verify the close-loop control performance, as shown in the followng figure.
-The tracking performances of serveral algorithms are summarized in the table.
+The figure and table show how well various algorithms perform on the vehicle tracking problem, 
+a common optimal control problem in autonomous driving. 
+The training environment is converted from an official `simulink vehicle model`_ using GOPS conversion tools. 
+The trained policy is then tested in the simulink model to evaluate its closed-loop control performance.
 
 +------------------------+------------------------+------------------------+------------------------+
 | Algorithm              | SAC                    |  DSAC                  | PPO                    |
@@ -75,10 +75,13 @@ The tracking performances of serveral algorithms are summarized in the table.
 .. _simulink vehicle model: https://ww2.mathworks.cn/help/releases/R2019b/vdynblks/ref/vehiclebody3dof.html
 
 
-Constraint Control Problem
+Constrained Control Problem
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The built-in constraint RL algorithms in GOPS can handle the constraint control problem, as shown in the following mobile robot obstacle avoidance task.
-Notice that the constraint value is minus along the trajectory, which means the robot is able to keep a safe distance from the obstacle.
+GOPS offers constrained RL algorithms that can handle constrained optimal control problems. 
+In the mobile robot obstacle avoidance task shown below, the robot agent trained by `SPIL`_ algorithm is able to maintain a safe distance from obstacles.
+This is indicated by the negative constraint value along the robot's trajectory.
+
+.. _SPIL: https://arxiv.org/abs/2102.08539
 
 .. image:: figures&videos/Constraint_1.jpg
    :width: 45%
@@ -90,8 +93,11 @@ Notice that the constraint value is minus along the trajectory, which means the 
 
 Robust Control Problem
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-GOPS provides robust RL algorithms to ensure acceptable control performance within a certain range of modeling error and disturbance.
-Take active suspension control of a quarter-car system as an example, compared with the no-control situation, the learned policy well attenuates the vibration of the sprung mass.
+GOPS includes robust RL algorithms that can maintain acceptable control performance despite modeling errors and disturbances. 
+In the active suspension control problem shown below, the robust policy trained using the `RPI`_ algorithm 
+effectively reduces the vibration of the sprung mass under unknown roadbed disturbances compared to a no-control scenario.
+
+.. _RPI: https://arxiv.org/abs/2007.06810
 
 .. image:: figures&videos/Robust_1.jpg
    :width: 45%

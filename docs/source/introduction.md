@@ -22,6 +22,7 @@ GOPS currently supports the following algorithms:
 - [Finite-Horizon Approximate Dynamic Programming (FHADP)](https://link.springer.com/book/10.1007/978-981-19-7784-8)
 - [Mixed Actor-Critic (MAC)](https://ieeexplore.ieee.org/document/9268413)
 - [Mixed Policy Gradient (MPG)](https://arxiv.org/abs/2102.11513)
+- [Ternary Policy Iteration Algorithm for Nonlinear Robust Control (RPI)](https://arxiv.org/abs/2007.06810)
 - [Separated Proportional-Integral Lagrangian (SPIL)](https://arxiv.org/abs/2102.08539)
 
 ## Features
