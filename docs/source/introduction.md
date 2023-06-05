@@ -2,14 +2,9 @@
 Copyright © 2022 Intelligent Driving Laboratory (iDLab). All rights reserved.
 
 ## Description
-Optimal control is an important theoretical framework for sequential decision-making and control of industrial objects, especially for complex and high-dimensional problems with strong nonlinearity, high randomness, and multiple constraints.
-Solving the optimal control input is the key to applying this theoretical framework to practical industrial problems.
-Taking Model Predictive Control as an example, computation time solving its control input relies on receding horizon optimization, of which the real-time performance greatly restricts the application and promotion of this method.
-In order to solve this problem, iDLab has developed a series of full state space optimal strategy solution algorithms and the set of application toolchain for industrial control based on Reinforcement Learning and Approximate Dynamic Programming theory.
-The basic principle of this method takes an approximation function (such as neural network) as the policy carrier, and improves the online real-time performance of optimal control by offline solving and online application.
-The GOPS toolchain will cover the following main links in the whole industrial control process, including control problem modeling, policy network training, offline simulation verification, controller code deployment, etc.
-GOPS currently supports the following algorithms:
+Solving optimal control problems serves as the basic demand of industrial control tasks. Existing methods like model predictive control often suffer from heavy online computational burdens. Reinforcement learning (RL) has shown promise in computer and board games but has yet to be widely adopted in industrial applications due to a lack of accessible and high-accuracy solvers. Current RL solvers are often developed for academic research and require a significant amount of theoretical knowledge and programming skills. Besides, many of them only support Python-based environments and limit to model-free algorithms. To address this gap, we develop General Optimal control Problems Solver (GOPS), an easy-to-use RL solver package that aims to build real-time and high-performance controllers in industrial fields. GOPS is built with a highly modular structure that retains a flexible framework for secondary development. Considering the diversity of industrial control tasks, GOPS also includes a conversion tool that allows for the use of Matlab/Simulink to support environment construction, controller design, and performance validation. To handle large-scale problems, GOPS can automatically create various serial and parallel trainers by flexibly combining embedded buffers and samplers. It offers a variety of common approximate functions for policy and value functions, including polynomial, multilayer perceptron, convolutional neural network, etc. Additionally, constrained and robust algorithms for special industrial control systems with state constraints and model uncertainties are also integrated into GOPS.
 
+GOPS provides a variety of algorithms for solving optimal control problems. These built-in algorithms cover the mainstream RL algorithms, including model-free/model-based, on-policy/off-policy, and direct/indirect. Currently supported algorithms are shown as follows:
 - [Deep Q Network (DQN)](https://arxiv.org/abs/1312.5602)
 - [Deep Deterministic Policy Gradient (DDPG)](https://arxiv.org/abs/1509.02971)
 - [Twin Delayed DDPG (TD3)](https://arxiv.org/abs/1802.09477)
@@ -26,55 +21,48 @@ GOPS currently supports the following algorithms:
 - [Separated Proportional-Integral Lagrangian (SPIL)](https://arxiv.org/abs/2102.08539)
 
 ## Features
-
-GOPS has the following features:
-
-- Adopt a **highly modular structure** that allows for easy secondary development of environments and algorithms.
-
-- Support mainstream **model-free** and **model-based**, **direct** and **indirect** reinforcement learning algorithms.
-
-- Support both **serial** and **parallel** training modes.
-
-- Support handling of special industrial control issues, such as **explicit policies**, **state constraints**, **model uncertainties**, etc.
-
-- Support conversion from **Matlab/Simulink** models to GOPS-compatible environments and from GOPS-learned policies back to Matlab/Simulink.
-
-- Support **model predictive control (MPC)** for environments with analytical models.
-
-- Support evaluation of **state and action curves** and comparison of different policies.
+The main features of GOPS are summarized as follows:
+1. GOPS adopts a highly modular configuration that allows for easy secondary development of environments and algorithms, making it accessible for users without professional RL knowledge or programming skills.
+2. GOPS supports multiple training modes for handling complex and large-scale problems, including serial and parallel modes for on-policy and off-policy, model-free and model-based, and direct and indirect algorithms. It can handle special requirements from industrial control, such as explicit policies, state constraints, and model uncertainties.
+3. Considering the widespread use of Matlab/Simulink in industry control, GOPS offers a convenient conversion tool to support high-performance controller design for Simulink models. This tool enables the transformation of existing Simulink models into GOPS-compatible environments and allows for performance validation and controller deployment by sending the learned policy back to Simulink.
 
 ## Installation
+To successfully install GOPS, it is essential to ensure that the following requirements are met:
+1. Operating system: GOPS is compatible with Windows 7 or any later version, as well as Ubuntu 18.04 or any later version. Please make sure that your system meets these specifications.
+2. Python version: GOPS requires Python 3.6 or a more recent version. For the proper functioning of the precompiled Simulink models in GOPS V1.0, it is necessary to have Python 3.8 installed. We highly recommend using Python 3.8 to ensure the best user experience.
+3. Matlab/Simulink (Optional): To utilize the full capabilities of GOPS, you may choose to have Matlab/Simulink 2018a or a more recent version installed. This is not mandatory for the installation process, but it enables seamless integration and enhanced functionality with Matlab/Simulink.
+4. Installation Path: It is crucial to note that the installation path for GOPS should be in English and does not contain any special characters.
 
-GOPS requires:
-1. Windows 7 or greater or Linux.
-2. Python 3.6 or greater (GOPS V1.0 precompiled Simulink models use Python 3.8). We recommend using Python 3.8.
-3. (Optional) Matlab/Simulink 2018a or greater.
-4. The installation path must be in English.
-
-You can install GOPS through the following steps:
+After fulfilling these requirements, you are ready to proceed with the GOPS installation process. You can install GOPS through the following steps:
+1. Clone the GOPS repository and change to the GOPS directory:
 ```bash
-# clone GOPS repository
 git clone https://github.com/Intelligent-Driving-Laboratory/GOPS.git
 cd gops
-# create conda environment
+```
+2. Create and activate the conda environment for GOPS:
+```bash
 conda env create -f gops_environment.yml
 conda activate gops
-# install GOPS
+```
+3. Install GOPS and its required packages:
+```bash
 pip install -e .
 ```
 
 ## Quick Start
-This is an example of running finite-horizon Approximate Dynamic Programming (FHADP) on inverted double pendulum environment. 
-Train the policy by running:
+To demonstrate the usage of GOPS, we give an example of training a policy using Finite-Horizon Approximate Dynamic Programming (FHADP) algorithm in the inverted double pendulum environment. 
 
+We train the policy by running the following command:
 ```bash
 python example_train/fhadp/fhadp_mlp_idpendulum_serial.py
 ```
-After training, test the policy by running:
+
+After training, we test the policy by running the following command:
 ```bash
 python example_run/run_idp_fhadp.py
 ```
-You can record a video by setting `save_render=True` in the test file. Here is a video of running a trained policy on the task:
+
+We can record a video by setting `save_render`=`True` in the file `run_idp_fhadp.py`. A video of testing a policy trained by FHADP in this environemnt is shown as follows:
 
 (idpendulum)=
 ```{figure} ./figures&videos/idp.mp4
@@ -109,13 +97,12 @@ The contributors of GOPS are as follows:
 
 [Shengbo Eben Li](https://www.researchgate.net/profile/Shengbo-Li-2) leads the development of this project.
 
-
 **Team Members (in alphabetical order)**
 
 [Baiyu Peng](https://baiyu6666.github.io),
 [Congsheng Zhang](https://www.researchgate.net/profile/Congsheng-Zhang),
 [Genjin Xie](https://www.researchgate.net/profile/Xie-Genjin-2),
-[Ziqing Gu](https://scholar.google.com/citations?user=B8Ys1-0AAAAJ).
+[Ziqing Gu](https://scholar.google.com/citations?user=B8Ys1-0AAAAJ),
 [Hao Sun](https://gitee.com/roshandaddy),
 [Jiaxin Gao](https://www.researchgate.net/profile/Jiaxin_Gao5),
 [Jie Li](https://www.researchgate.net/profile/Jie-Li-216),
@@ -133,5 +120,5 @@ The contributors of GOPS are as follows:
 [Yuheng Lei](https://sites.google.com/view/yuhenglei),
 [Yujie Yang](https://yangyujie-jack.github.io/),
 [Yuxuan Jiang](https://github.com/jjyyxx),
-[Zhilong Zheng](https://www.researchgate.net/profile/Zhilong-Zheng-4)
+[Zhilong Zheng](https://www.researchgate.net/profile/Zhilong-Zheng-4).
 
