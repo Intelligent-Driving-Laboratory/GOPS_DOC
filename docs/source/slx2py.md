@@ -1,18 +1,18 @@
 (simulink)=
 # Simulink to GOPS
 
-GOPS uses slxpy to convert Simulink models to Python environments.
-Slxpy is a toolchain for seamlessly generating efficient Simulink-to-Python binding and gym-like environment wrapper.
+GOPS utilizes slxpy to convert Simulink models into Python environments. Slxpy is a toolchain designed to produce efficient and seamless Simulink-to-Python bindings, complete with a gym-like environment wrapper.
+
 
 ## Documentation structure
-The sidebar on the right roughly corresponds to your learning process. Follow instructions in Prerequisities, Installation and Quick start to use this package.
+Follow instructions in Prerequisities, Installation and Quick start to use this package.
 
 For Simulink modeling guide, see Modeling guide.  
 For Gym and `env.toml` config documentation, see Gym-like environment.  
 For development notes and todos, see Development.  
 To build for multiple Python versions, try Multi target build.
 
-The flowchart serves as an overview and briefly describes the common workflow for your smoother integration. You could refer to relevant sections in the wiki for details.
+The flowchart serves as an overview and briefly describes the common workflow for your smoother integration. You could refer to relevant sections for details.
 (conversion)=
 ```{figure} ./figures&videos/simulink_conversion.png
 :alt: conversion
@@ -31,16 +31,17 @@ Due to the nature of native compilation, certain preparation is needed before us
 
 - **Version**: >= R2018a ( >= **R2021a** recommended )
 
-  - **R2021a** may be the first version actually suitable for RL environment as it allows `instance parameters`. Previous versions of Embedded Coder will generates static parameters which might be difficult to use in a program (shared by all instances).
+  - **R2021a** may be the first version actually suitable for RL environment as it allows `instance parameters`. Previous versions of Embedded Coder will generates static parameters which might be difficult to use in a program.
   - For version >= R2018a, limited support is added.
 
-    MATLAB prior to R2021a will inline parameters defined in model workspace when C++ interface is chosen. The script has some logic to allow you to code as R2021 workflow, and maintain tunability on prior to R2021a releases, but the script may fail on the first run and work for following runs due to unknown reasons. (In R2021a it's far easier)
+     Before R2021a, MATLAB inlines parameters that are defined in the model workspace when the C++ interface is selected. Although the script includes some logic to enable coding in the R2021 workflow and maintain tunability on earlier releases, it may fail on the first run and then work on subsequent runs for unknown reasons. In R2021a, this process is much simpler.
+
 
   - For version <= R2017b, some Simulink internal error prohibits proper code generation, thus unsupported.
 
   - MATLAB since **R2022a** supports **reusable Simscape model**, and slxpy provides corresponding support. Simscape enables powerful non-causal system modeling, which may be very useful for environment design.
 
-    After Mathworks ticket 05353942 & 05373346, reusable C++ class in this release is an unintended bug, and only reusable C interface is officially supported. So, it may not yet work as expected. (Bug/Enhancement Submitted)
+    After Mathworks ticket 05353942 & 05373346, reusable C++ class in this release is an unintended bug, and only reusable C interface is officially supported. So, it may not yet work as expected. 
 
   - MATLAB **R2022b** fixes some code generation errors (with ticket 05703735) with complex VDBS models. It's recommended to upgrade.
 
@@ -59,13 +60,13 @@ Due to the nature of native compilation, certain preparation is needed before us
 
   For `Step 2`, Embedded Coder does not depend on a C++ toolchain to generate code, but may display a warning for failing to generate build files, which is OK.
 
-  For some MATLAB versions, however, if you are facing error like this:
+    In some versions of MATLAB, you may encounter an error like the following:
   > The model is configured for C++ code generation, but the C-only compiler, LCC, is the default compiler. To allow code generation, on the Code Generation pane:
   >
   > 1. Select the 'Generate code only' check box.
   > 2. In the Toolchain field, select a toolchain from the drop-down list.
 
-  it may be a logic error in Embedded Coder. Just select an alternative C++ toolchain other than LCC, even if it does not exist in your system.
+  This error could be due to a logic error in Embedded Coder. A solution is to select an alternative C++ toolchain other than LCC, even if it is not installed on your system.
 
 - C++ 17 compatible compiler (one of)
   - for Windows, Visual Studio 2019 16.11 or newer (16.7 is broken with `std::functional`)
@@ -79,7 +80,7 @@ Due to the nature of native compilation, certain preparation is needed before us
 - Basic C++ compiler knowledge is helpful to diagnose potential issues
 
 ## Installation
-You need to install two packages, one Python package for Python main logic, one MATLAB toolbox for MATLAB interop.
+The process requires you to install two packages: a Python package for the primary Python logic and a MATLAB toolbox for MATLAB interop.
 
 1. Install Python package with `pip install slxpy`
 
@@ -129,7 +130,7 @@ You need to install two packages, one Python package for Python main logic, one 
    Code generation C++ namespace []: <Leave empty for simple use>
    ```
 
-   Then adjust `model.toml` and `env.toml` as needed (See comments in file, and also Gym-like environment).
+   Then adjust `model.toml` and `env.toml` as needed.
 
 2. Simulink code generation
 
@@ -198,12 +199,9 @@ If you need some learning materials about modeling and code generation, see [Ref
 
 To support gym environment generation, see Gym-like environment.
 
-A example model `example_model.slx` is available at the [Release](https://github.com/jjyyxx/slxpy/releases) section, with some extra tips and best practices annotated in the model. You can download and try it out.
-
 ### Tunable parameter
 
-The computer execution model is inherently deterministic, all randomness relies on at least one external source.
-To give environment randomness, we must make some parameters tunable, so, model parameters (physical parameters, random seed, initial state of intergrator, etc.) shall be created with following two steps.
+The computer execution model is inherently deterministic, with any randomness relying on at least one external source. In order to introduce environmental randomness, we must make certain parameters tunable. Therefore, model parameters such as physical parameters, random seed, and initial state of integrator must be created with the following two steps.
 
 - Set them in `Model workspace` as `Simulink Parameter`. If it's a `MATLAB variable` rather than a `Simulink Parameter`, right-click entries, select `Convert to parameter object` to convert.
 - Tick the `Argument` checkbox.
@@ -213,12 +211,18 @@ Parameter tunability has certain limitations, see the "Limitations by Embedded C
 ### Recipes
 
 #### Model with existing controller
-If you have a model with an existing closed-loop controller, you could separate all other blocks into a **Plant** subsystem (tip: selecting all blocks except the controller, right-click and choose "Create subsystem from selection"), deleting (or commenting out) the controller, and connecting **Plant** subsystem's input and outport ports to root inports and outports. If you need to create a Gym-like environment, you could preprocess action, postprocess observation and calculating rewards and done signals at root level according to requirements in Gym-like environment.
+
+If you already have a model with a pre-existing closed-loop controller, one option is to isolate all other blocks into a **Plant** subsystem. To do this, select all blocks except the controller and choose "Create subsystem from selection" by right-clicking. Then, delete or comment out the controller and connect the **Plant** subsystem's input and output ports to the root input and output ports. If you want to create a Gym-like environment, you can pre-process actions, post-process observations, and calculate rewards and done signals at the root level to meet the requirements of the Gym-like environment.
 
 #### Action switching
-Both _Variant Source_ and _Multiport Switch_ are sensible choices for switching between multiple inputs (e.g. one inport and one closed-loop controller). The fundamental difference between them is (I call) the choice happens at compile-time vs run-time.
-- If you do not need to switch between different inputs at run-time, _Variant Source_ is the correct choice, because it completely eliminates the other branch. Thus, even if your closed-loop controller does not support code generation (e.g. with an S-function), you can still generate code with external input. Efficiency, visual clearance and prevention of the signal broadcasting bug (see below) are its additional benefits.
+
+Both the _Variant Source_ and _Multiport Switch_ can be utilized to switch between multiple inputs. The primary distinction between them is that the choice occurs at compile-time in the former, whereas it takes place at run-time in the latter.
+
+- If you do not need to switch between different inputs at run-time, _Variant Source_ is the correct choice, because it completely eliminates the other branch. Thus, even if your closed-loop controller does not support code generation, you can still generate code with external input. Efficiency, visual clearance and prevention of the signal broadcasting bug are its additional benefits.
+
 - If you DO need to switch between different inputs at run-time, you have to use Multiport Switch, with an additional inport or tunable parameter as driver. **Extra care shall be taken to specify inport dimension explicitly, as inport may erroneously be considered as a scalar then broadcast to the same size as the closed-loop controller.**
+
+
 
 ### Limitations
 
@@ -242,7 +246,7 @@ Luckily, entries mentioned above might rarely be used in modeling, especially ph
 ### Reference materials
 If you are not familiar with Simulink modeling, you could take a look at [Simulink Onramp](https://www.mathworks.com/learn/tutorials/simulink-onramp.html) tutorial.
 
-If you are not familiar with general process of preparing a Simulink model for code generation, you could see
+If you are unfamiliar with the general process of preparing a Simulink model for code generation, you may refer to
 1. https://www.mathworks.com/help/ecoder/ug/standard-methods-to-prepare-a-model-for-code-generation.html
 2. https://www.mathworks.com/help/ecoder/product-fundamentals.html
 
@@ -259,9 +263,7 @@ If modeling properly, Slxpy could generate gym environment with minimal configur
 
 ### env.toml
 
-Configuration file `env.toml` can be used to control various aspects of environment wrapping, including action_space, observation_space, initial observation and parameter initialization.
-
-The following sections are taken from the template file.
+The `env.toml` configuration file allows for manipulation of different aspects of environment wrapping, such as the action_space, observation_space, initial observation, and parameter initialization. The excerpt below is derived from the template file.
 
 #### Basic setting
 Control features to be generated for the module.
@@ -372,9 +374,9 @@ Also control `action_space`, `observation_space` and `reward_range`.
 
 #### Define how parameters are initialized on each reset
 Environment randomness is crucial for reinforcement learning.
-Because program execution is inherently deterministic, all randomness comes from parameters. This section demonstrates some commonly used (limited set of) random mechanisms while maintaining reproducibility with `seed()` method.
+Program execution is inherently deterministic, therefore all randomness is derived solely from parameters. This section demonstrates some commonly used random mechanisms while maintaining reproducibility with `seed()` method.
 
-Parameter names must be a subset of the Simulink model tunable parameters.
+The parameter names need to be a subset of the Simulink model's tunable parameters.
 
 ```toml
 ### A table to define individual parameter initialization policy
@@ -424,8 +426,8 @@ Parameter names must be a subset of the Simulink model tunable parameters.
 ```
 (advanced-wrapping)=
 ### Advanced wrapping
-Some highly costomized needs are non-trivial to cover in a config file.
-Also, going through the whole building process may be inefficient for environment tuning. Instead, you could wrap the `GymEnv` with a Python-class wrapper and implement your logic.
+Certain highly customized requirements may not be adequately addressed through a configuration file.
+Moreover, undergoing the entire building process could result in ineffective environmental adjustments. Alternatively, one can wrap `GymEnv` with a Python class for implementing customized logic.
 
 Instead of using inheritance, you should use composition as follows:
 ```python
@@ -467,15 +469,15 @@ class EnvWrap(gym.Env):
         self.rng = np.random.default_rng(seed)
         return self.env.seed(seed) if seed is not None else self.env.seed()
 ```
-One shortcoming is if you provided a reset callback, you should set `vec_parallel` to `false`, otherwise the callback and Python GIL may lead to deadlock.
 
+One potential limitation of the current implementation is that if a reset callback is provided, it is necessary to explicitly set the `vec_parallel` to `false`, otherwise the callback and Python GIL may lead to deadlock.
 
 ## Multi target build
-To help build a model for multiple Python versions, slxpy provides a command to automatically build for multiple Python versions and aggregate results.
+Slxpy includes a command that facilitates the model building process for multiple Python versions and consolidates the results.
 
-0. It's required that slxpy is running with conda installation available to use this feature!
+0. It's required that slxpy is running with conda installation available to use this feature;
 
-1. Setup builder environments (Need only once)
+1. Setup builder environments.
 
 ```bash
 slxpy multi-build setup
@@ -509,4 +511,3 @@ This may be a flaw of Mathworks product design.
 ### What if code generation / transformation / compilation fails?
 Do not panic and read the error message carefully. It's often a small mistake instead of fatal error. Catching a bug at compiling time is always better than a runtime error after deployment.
 
-If you fail to locate the problem or are confident it's a Slxpy bug, it's welcome to submit an issue!

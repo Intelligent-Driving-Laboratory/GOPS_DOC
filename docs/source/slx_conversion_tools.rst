@@ -2,17 +2,17 @@
 Simulink Conversion Tools
 ========================================
 
-GOPS offers a utility tool that can convert standard Simulink models into GOPS-compatible environments 
-and then sends the trained policy back to Simulink for validation.
+GOPS includes a utility tool that can convert standard Simulink models into GOPS-compatible environments 
+and send trained policies back to Simulink for validation. The tool's pipeline is shown in the figure below.
 
-The pipeline of this utility tool is shown in the following figure. 
-After properly configuring the Simulink model, GOPS uses MATLAB Embedded Coder to generate C++ codes, reads model metadata to extract model I/O and parameters, 
-and generates pybind11 binding codes with templates to become Python-compatible environments.
 
-The compiled environment retains the ability to manually tune critical parameters, which avoids repeatedly rebuilding the binary file and simplifies the environment setups.
-It preserves features such as cross-platform support, high execution efficiency, and type hint generation. 
+After configuring the Simulink model, GOPS uses MATLAB Embedded Coder to generate C++ code and extract model I/O and parameters. 
+It then generates pybind11 binding code using templates to create a Python-compatible environment that has the same input and output as the Simulink model.
+This environment retains the ability to manually adjust critical parameters, avoiding the need to rebuild the binary file and simplifying setup. 
 
-Once an optimal control policy is found, the tool can send it back to Simulink by wrapping it in an S-Function block, which can be easily integrated into a Simulink model for performance evaluation or controller deployment.
+
+Additionally, the tool can send the trained policy back to Simulink by wrapping it in an S-Function block. 
+This block can be easily integrated into a Simulink model for performance evaluation or controller deployment.
 
 
 
