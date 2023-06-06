@@ -17,8 +17,8 @@ Some arguments are coupling with others. Change them separately may cause error 
 ## User Parameters
 Key parameters in user level:
 
-- `env_id` (str): the ID of the environment
-- `algorithm` (str): the name of the reinforcement learning algorithm to use
+- `env_id` (str): ID of the environment
+- `algorithm` (str): name of the reinforcement learning algorithm to use
 - `enable_cuda` (bool): whether to use CUDA for computation
 - `seed` (int): (Optional): assign the global seed for training, using a random value by default 
 
@@ -26,7 +26,7 @@ Key parameters in user level:
 ## Environment Parameters
 Basic and extra parameters for environment.
 
-- `action_type` (str): the type of environment action: 'continu' or 'discret' 
+- `action_type` (str): type of environment action: 'continu' or 'discret' 
 - `is_render` (bool): whether render the env when evaluation
 
 :::{note}
@@ -44,7 +44,7 @@ Basic and extra parameters for value and policy function.
 - `value_func_type` (str): type of value function, depended on the used algorithm: `MLP`, `CNN`, `CNN_SHARED`, `RNN`, `POLY`, `GAUSS`
 - `policy_func_name` (str): policy function structure, depended on the used algorithm: `None`, `DetermPolicy`, `FiniteHorizonPolicy`, `StochaPolicy`
 - `policy_func_type` (str): type of policy function, depended on the used algorithm: `MLP`, `CNN`, `CNN_SHARED`, `RNN`, `POLY`, `GAUSS`
-- `policy_act_distribution` (str): the type of distribution for policy actions: `default`, `TanGaussDistribution`, `GaussDistribution`
+- `policy_act_distribution` (str): type of distribution for policy actions: `default`, `TanGaussDistribution`, `GaussDistribution`
 
 :::{note}
 Some arguments are coupling with others. Change them separately may cause error or incorrect results.   
@@ -56,9 +56,9 @@ There are 3 main ways to check for such errors.
 - Different choice of the function type means specific parameters need to be set, details of which can be found in `get_appfunc_dict` function in `gops/utils/common_utils`. 
 
 For example, if the function type is `MLP` or `RNN`, the following parameters need to be set:
-- `hidden_sizes` (list): the size of hidden layers in value or policy function.
-- `hidden_activation` (str): the activation function for hidden layers in value or policy function: `relu`, `gelu`, `elu`, `selu`, `sigmoid`, `tanh`
-- `output_activation` (str): the activation function for output in value or policy function: `linear`, `tanh`
+- `hidden_sizes` (list): size of hidden layers in value or policy function.
+- `hidden_activation` (str): activation function for hidden layers in value or policy function: `relu`, `gelu`, `elu`, `selu`, `sigmoid`, `tanh`
+- `output_activation` (str): activation function for output in value or policy function: `linear`, `tanh`
 
 
 ##  RL Algorithm Parameters
@@ -89,32 +89,32 @@ parser.add_argument("--bound", default=True)
 ## Trainer Parameters
 Basic and extra parameters for trainer. 
 
-- `trainer` (str): the type of trainer: `off_serial_trainer`, `off_async_trainer`, `off_sync_trainer`, `on_serial_trainer`, `on_sync_trainer`
-- `max_iteration` (int): the number of max iteration
+- `trainer` (str): type of trainer: `off_serial_trainer`, `off_async_trainer`, `off_sync_trainer`, `on_serial_trainer`, `on_sync_trainer`
+- `max_iteration` (int): number of max iteration
 - `ini_network_dir` (str): path of initial networks
-- `num_algs` (int): the number of algorithms if async trainer is used
-- `num_samplers` (int): the number of samplers to use
+- `num_algs` (int): number of algorithms if async trainer is used
+- `num_samplers` (int): number of samplers to use
 - `sample_interval` (int): period of sampling
 
 ## Buffer Parameters
 Basic and extra parameters for buffer. 
 
-- `buffer_name` (str): the name of buffer to use: `replay_buffer`, `prioritized_replay_buffer`
+- `buffer_name` (str): name of buffer to use: `replay_buffer`, `prioritized_replay_buffer`
 - `buffer_warm_size` (int): size of collected samples before training
 - `buffer_max_size` (int): max size of replay buffer
 - `replay_batch_size` (int): batch size of replay samples from buffer
 ## Sampler Parameters
 Basic and extra parameters for sampler. 
 
-- `sample_name` (str): the name of sampler to use: `off_sampler`, `on_sampler`
+- `sample_name` (str): name of sampler to use: `off_sampler`, `on_sampler`
 - `sample_batch_size` (int): batch size of sampler for buffer store
 - `noise_params` (dict): add noise to action for better exploration, only used for continuous action space
 
 ## Evaluator Parameters
 Basic and extra parameters for evaluator. 
 
-- `evaluator_name` (str): the name of evaluator to use: `evaluator`, `evaluator_filter`
-- `num_eval_episode` (int): the number of episodes for evaluation
+- `evaluator_name` (str): name of evaluator to use: `evaluator`, `evaluator_filter`
+- `num_eval_episode` (int): number of episodes for evaluation
 - `eval_interval` (int): period of every evaluation episode
 - `eval_save` (bool): whether to save evaluation data: `True`, `False`
 
