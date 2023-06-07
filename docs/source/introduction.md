@@ -27,13 +27,13 @@ The main features of GOPS are summarized as follows:
 3. Considering the widespread use of Matlab/Simulink in industry control, GOPS offers a convenient conversion tool to support high-performance controller design for Simulink models. This tool enables the transformation of existing Simulink models into GOPS-compatible environments and allows for performance validation and controller deployment by sending the learned policy back to Simulink.
 
 ## Installation
-To successfully install GOPS, it is essential to ensure that the following requirements are met:
+Installation requirements:
 1. Operating system: GOPS is compatible with Windows 7 or any later version, as well as Ubuntu 18.04 or any later version. Please make sure that your system meets these specifications.
 2. Python version: GOPS requires Python 3.6 or a more recent version. For the proper functioning of the precompiled Simulink models in GOPS V1.0, it is necessary to have Python 3.8 installed. We highly recommend using Python 3.8 to ensure the best user experience.
 3. Matlab/Simulink (Optional): To utilize the full capabilities of GOPS, you may choose to have Matlab/Simulink 2018a or a more recent version installed. This is not mandatory for the installation process, but it enables seamless integration and enhanced functionality with Matlab/Simulink.
 4. Installation Path: It is crucial to note that the installation path for GOPS should be in English and does not contain any special characters.
 
-After fulfilling these requirements, you are ready to proceed with the GOPS installation process. You can install GOPS through the following steps:
+Installation steps:
 1. Clone the GOPS repository and change to the GOPS directory:
 ```bash
 git clone https://github.com/Intelligent-Driving-Laboratory/GOPS.git
@@ -97,6 +97,8 @@ The contributors of GOPS are as follows:
 
 [Shengbo Eben Li](https://www.researchgate.net/profile/Shengbo-Li-2) leads the development of this project.
 
+[Jingliang Duan](https://www.researchgate.net/profile/Jingliang-Duan) is the co-leader of this project.
+
 **Team Members (in alphabetical order)**
 
 [Baiyu Peng](https://baiyu6666.github.io),
@@ -106,7 +108,6 @@ The contributors of GOPS are as follows:
 [Hao Sun](https://gitee.com/roshandaddy),
 [Jiaxin Gao](https://www.researchgate.net/profile/Jiaxin_Gao5),
 [Jie Li](https://www.researchgate.net/profile/Jie-Li-216),
-[Jingliang Duan](https://www.researchgate.net/profile/Jingliang-Duan),
 [Letian Tao](https://github.com/tlt18),
 [Tong Liu](https://www.researchgate.net/profile/Tong-Liu-94),
 [Wenhan Cao](https:wenhancao.github.io),

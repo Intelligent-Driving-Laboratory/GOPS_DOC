@@ -44,12 +44,12 @@ See [](simulink).
 
 ### Environment creation rules
 
-Any environment is created either by the data version creating function `gops.create_pkg.create_env.create_env()` or by the model version creating function `gops.create_pkg.create_env_model.create_env_model()`. When these two functions are called, they first import an environment file, which should be named as "`env_id`_data.py" or "`env_id`_model.py", where `env_id` is the environment name specified in training configurations. Note that all environments should have a data version for data sampling while the model version is needed only for model-based algorithms. Then, there are two methods to enable the create functions to find the environment:
+Any environment is created using the `gops.create_pkg.create_env.create_env()` function. When the function is called, it first import an environment file named  "`env_id`.py", where `env_id` is the environment name specified in training configurations. There are two methods to enable the create functions to find the environment:
 
-- Define a function `env_creator()` or `env_model_creator()` in the file that takes the environment name and returns an instance of the environment.
+- Define a function `env_creator()` in the file that takes the environment name and returns an instance of the environment.
 - Define an environemnt class in the file with the same name as `env_id` but in Pascal naming convention (PascalCase).
 
-For example, if `env_id`=`"pyth_veh2dofconti"`, then the data version environment file should be named as `pyth_veh2dofconti_data.py`. If using the first creation method and assuming that the environment class name is `SimuVeh2dofconti`, then there should be such a function as follows in the file:
+For example, if `env_id`=`"pyth_veh2dofconti"`, then the environment file should be named as `pyth_veh2dofconti_data.py`. If using the first creation method and assuming that the environment class name is `SimuVeh2dofconti`, then there should be such a function as follows in the file:
 
 ```python
 def env_creator(**kwargs):
@@ -57,6 +57,8 @@ def env_creator(**kwargs):
 ```
 
 If using the second creation method, then there should be an environment class named `PythVeh2dofconti` in the file. If neither of the two requirements are met, the creating function will raise an error.
+
+You can also create a differentiable environment model (used in model-based RL) using a similar method. The only difference is that the environment model file should be named "`env_id`_model.py" and the creating function in the file should be named as `env_model_creator()`.
 
 ### Naming conventions
 

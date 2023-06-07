@@ -1,13 +1,14 @@
 # Model Predictive Control (MPC) Module
 
-An optimal controller based on MPC is implemented in GOPS to offer a baseline for comparing different algorithms. This module provides simple but also flexible interfaces for other modules to call. The current version offers the following features:
+The MPC method is implemented in GOPS to offer a baseline for comparing different algorithms, which offers the following features:
 - nonlinear model predictive control
-- support for environment models implemented in PyTorch, compatible to the existed GOPS codes
+- support for environment models implemented in PyTorch
 - support for two solving methods: direct collocation and direct shooting
 - user-assigned control interval for move blocking strategy
 - support for passing user-defined functions as terminal cost (including neural networks)
 - specifiable discounting factor that enables a unified problem formulation with RL community
 - flexible optimization options for tuning
+
 
 We adopt [IPOPT (Interior Point Optimizer)](https://coin-or.github.io/Ipopt), an open source software package for large-scale nonlinear optimization, to solve the nonlinear programming problem constructed at each timestep.
 

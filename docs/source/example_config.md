@@ -1,17 +1,17 @@
 # Training Configuration
 
-This doc illustrates how to set arguments in training process. There are several pre-defined training examples using specific algorithm in dir  `example_train/algorithm`. You can create a new training configuration based on existing example.
+This documentation explains how to configure arguments for the training process. Several pre-defined training examples using specific algorithms can be found in the `example_train/algorithm` directory. You can create a new training configuration based on these existing examples.
 
-GOPS use `argparse` package to pass and parse arguments, the arguments will be passed to ```init_args() ``` function in `gops/utils/init_args.py` to create corresponding components such like sampler or trainer.
+GOPS use the `argparse` package to pass and parse arguments. These arguments will be passed to ```init_args() ``` function in `gops/utils/init_args.py` to create corresponding components such like samplers or algorithms.
 
 :::{important}
-Some arguments are coupling with others. Change them separately may cause error or incorrect results. **Please carefully read this doc before making any change.** 
+Please note that some arguments are interdependent. Change them separately may cause errors or incorrect results. **Please read this documentation carefully  before making any change.** 
 ::: 
 
 
 
 ## Environment Variables
-`OMP_NUM_THREADS` : This environment variable controls the num of threads of each process when using `ray` package for parallel computing. The default value is `1`. 
+`OMP_NUM_THREADS` : This environment variable controls the number of threads used by each process when using the `ray` package for parallel computing. The default value is `1`. 
 
 
 ## User Parameters
@@ -30,11 +30,11 @@ Basic and extra parameters for environment.
 - `is_render` (bool): whether render the env when evaluation
 
 :::{note}
-In order to unify different type of environments, GOPS will add some extra environment wrappers for '_data' type or '_model' type environment by default. **You can also add or remove specific wrapper by adding corresponding argument here.** Refer to
+To standardize different types of environments, GOPS uses some additional environment wrappers by default. **You can also add or remove specific wrappers by configuring the corresponding parameters here.** Refer to
 {ref}`wrapping_utils` for more information.   
 ::: 
 :::{note}
-Some environments may need extra parameters, which should be added here.
+Some environments may require extra parameters, which should be added here.
 ::: 
 
 ## Approximate Function Parameters
@@ -47,13 +47,13 @@ Basic and extra parameters for value and policy function.
 - `policy_act_distribution` (str): type of distribution for policy actions: `default`, `TanGaussDistribution`, `GaussDistribution`
 
 :::{note}
-Some arguments are coupling with others. Change them separately may cause error or incorrect results.   
+Please note that some arguments are interdependent. Changing them separately may cause errors or incorrect results. 
 ::: 
 
-There are 3 main ways to check for such errors. 
-- You can check the `init_args()` function in `gops/utils/init_args.py` as all arguments will be passed here to create corresponding components. 
-- For every type of function, you can find the complete configuration in `gops/appfunc`. 
-- Different choice of the function type means specific parameters need to be set, details of which can be found in `get_appfunc_dict` function in `gops/utils/common_utils`. 
+There are three main ways to check for such errors. 
+- You can check the `init_args()` function in `gops/utils/init_args.py` as all arguments are passed here to create corresponding components. 
+- For each type of function, you can find the complete configuration in `gops/appfunc`. 
+- Different choices of the function type require specific parameters to be set. Details can be found in the `get_appfunc_dict` function in `gops/utils/common_utils`. 
 
 For example, if the function type is `MLP` or `RNN`, the following parameters need to be set:
 - `hidden_sizes` (list): size of hidden layers in value or policy function.
@@ -68,7 +68,7 @@ Basic and extra parameters for algorithm.
 - `policy_learning_rate` (float): learning rate of policy iteration
 
 :::{note}
-For some RL algorithms, extra parameters need to be set. Refer to `algorithm` module for detailed information.
+For some RL algorithms, additional parameters need to be set. Please refer to the Refer to the `algorithm` module for detailed information.
 :::
 
 Take DSAC as an example:

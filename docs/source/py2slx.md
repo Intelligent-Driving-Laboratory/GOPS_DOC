@@ -27,14 +27,14 @@ Put the trained policy back into Simulink for closed-loop verification and deplo
 
 3. Launch MATLAB 
 
-   To ensure a successful execution, confirm that you have launched MATLAB in a Python environment with PyTorch installed. If you encounter any issues, make sure that `GOPS` is installed in the same `PyTorch` environment. `PyTorch` is the only requirement.
+   To ensure a successful execution, confirm that you have launched MATLAB in a Python environment with PyTorch installed. If you encounter any issues, make sure that `GOPS` is installed in the same `PyTorch` environment.
 
 
     - If you prefer using your system-wide Python installation, you may launch MATLAB either from the shortcut or command line.
 
 
 
-    - If utilizing a conda-based environment, the most efficient method would be to initiate MATLAB via the command line interface.
+    - For the conda-based environment, the most efficient method would be to initiate MATLAB via the command line interface.
 
         ```shell
         conda activate <YOUR_ENV_WITH_PYTORCH>

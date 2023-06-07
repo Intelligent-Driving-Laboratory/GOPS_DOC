@@ -1,7 +1,7 @@
 
 Benchmark
 =======================================
-GOPS provides algorithm performance benchmark for Mujoco enviromnents and typical optimal control problems.
+GOPS supports both Mujoco environments and typical optimal control problems.
 
 Mujoco Benchmark
 ---------------------
