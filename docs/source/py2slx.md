@@ -27,7 +27,7 @@ Put the trained policy back into Simulink for closed-loop verification and deplo
 
 3. Launch MATLAB 
 
-   To ensure a successful execution, confirm that you have launched MATLAB in a Python environment with PyTorch installed. If you encounter any issues, make sure that `GOPS` is installed in the same `PyTorch` environment.
+   o ensure a successful execution, please make sure you have launched MATLAB within a Python environment that has PyTorch installed. If you encounter any issues, verify that `GOPS` is also installed in the same `PyTorch` environment.
 
 
     - If you prefer using your system-wide Python installation, you may launch MATLAB either from the shortcut or command line.

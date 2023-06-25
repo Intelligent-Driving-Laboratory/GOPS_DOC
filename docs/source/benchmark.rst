@@ -18,8 +18,8 @@ tracking problem, constrained control problem, robust control problem.
 
 LQR
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The figure and table show how well various algorithms perform on the LQR problem.
-The problem has 4 states and 2 control inputs and can be solved using analytical methods. 
+The figures and tables illustrate the performance of various algorithms on the LQR problem, 
+which involves 4 states and 2 control inputs and can be solved using analytical methods.
 The algorithms are evaluated based on the relative error between the states and control inputs produced by their learned policies
 and those of the analytical solution.
 

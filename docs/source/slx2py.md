@@ -1,11 +1,11 @@
 (simulink)=
 # Simulink to GOPS
 
-GOPS utilizes slxpy to convert Simulink models into Python environments. Slxpy is a toolchain designed to produce efficient and seamless Simulink-to-Python bindings, complete with a gym-like environment wrapper.
+GOPS utilizes slxpy as a toolchain to convert Simulink models into Python environments. slxpy is specifically designed to generate efficient and seamless Simulink-to-Python bindings. It also includes a gym-like environment wrapper, which allows for convenient integration with reinforcement learning frameworks and algorithms.
 
 
 ## Documentation structure
-Follow instructions in Prerequisities, Installation and Quick start to use this package.
+Follow the instructions in Prerequisites, Installation and Quick start to use this package.
 
 For Simulink modeling guide, see Modeling guide.  
 For Gym and `env.toml` config documentation, see Gym-like environment.  
@@ -20,7 +20,7 @@ The flowchart serves as an overview and briefly describes the common workflow fo
 :width: 600px
 ```
 
-## Prerequisities
+## Prerequisites
 Due to the nature of native compilation, certain preparation is needed before using this package.
 
 > A quick preview into Quick start page for information about `Step x`
@@ -31,7 +31,7 @@ Due to the nature of native compilation, certain preparation is needed before us
 
 - **Version**: >= R2018a ( >= **R2021a** recommended )
 
-  - **R2021a** may be the first version actually suitable for RL environment as it allows `instance parameters`. Previous versions of Embedded Coder will generates static parameters which might be difficult to use in a program.
+  - **R2021a** may be the first version actually suitable for RL environment as it allows `instance parameters`. Previous versions of Embedded Coder will generate static parameters which might be difficult to use in a program.
   - For version >= R2018a, limited support is added.
 
      Before R2021a, MATLAB inlines parameters that are defined in the model workspace when the C++ interface is selected. Although the script includes some logic to enable coding in the R2021 workflow and maintain tunability on earlier releases, it may fail on the first run and then work on subsequent runs for unknown reasons. In R2021a, this process is much simpler.
@@ -84,7 +84,7 @@ The process requires you to install two packages: a Python package for the prima
 
 1. Install Python package with `pip install slxpy`
 
-    It is recommanded to use slxpy with conda (to enable multi-target build) and install slxpy in an dedicated conda environment, i.e.
+    It is recommended to use slxpy with conda (to enable multi-target build) and install slxpy in a dedicated conda environment, i.e.
     ```bash
     conda create -n slxpy python=3.9
     conda activate slxpy
@@ -193,7 +193,7 @@ The process requires you to install two packages: a Python package for the prima
 
 
 ## Modeling guide
-Slxpy follows standard Simulink code generation process. If your model follows standard, minimal adjustments are required for proper code generation. So, detailed discussion about Simulink modeling is out of scope for this guide, you shall refer to Simulink documentation for instructions.
+Slxpy follows standard Simulink code generation process. If your model follows the standard, minimal adjustments are required for proper code generation. So, a detailed discussion about Simulink modeling is out of the scope of this guide, you shall refer to Simulink documentation for instructions.
 
 If you need some learning materials about modeling and code generation, see [Reference materials](#reference-materials) section.
 
@@ -229,7 +229,7 @@ Both the _Variant Source_ and _Multiport Switch_ can be utilized to switch betwe
 #### Limitations by Embedded Coder
 
 - S Function: You have to provide a `.tlc` file for S Function code generation, but `.tlc` is a difficult topic. So, I recommend using `MATLAB Function` block when possible.
-- Fixed-step Solver: Variable-step solver do not support code generation in Embedded Coder. (Some models may get wrong simulation result in Fixed-step Solver if numeric condition is bad. Make sure to validate before code generation for proper results.)
+- Fixed-step Solver: Variable-step solver do not support code generation in Embedded Coder. (Some models may get wrong simulation results in Fixed-step Solver if the numeric condition is bad. Make sure to validate before code generation for proper results.)
 - Algebraic Loop: Simulink could partially handle algebraic loop, but code generation does not. Try avoiding it using a `Unit Delay` or `Memory` block, or solve it iteratively in a `MATLAB Function` block.
 - Variable-sized input: Embedded Coder C++ interface do not support it.
 - Parameter tunability: See [Limitations for Block Parameter Tunability in Generated Code](https://www.mathworks.com/help/rtw/ug/limitations-for-block-parameter-tunability-in-the-generated-code.html)
@@ -238,7 +238,7 @@ Both the _Variant Source_ and _Multiport Switch_ can be utilized to switch betwe
 #### Limitations by Slxpy
 
 - Variable-sized output / Fixed-point data / Bitfield / Event & function-call based system: difficult to handle properly, currently not considered
-- String: string-related blocks are not supported. String `std::string` lead to non-POD struct in C++, breaking a fundemental assumption for Slxpy
+- String: string-related blocks are not supported. String `std::string` lead to non-POD struct in C++, breaking a fundamental assumption for Slxpy
 
 Luckily, entries mentioned above might rarely be used in modeling, especially physics-related ones.
 

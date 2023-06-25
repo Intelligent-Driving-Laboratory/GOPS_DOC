@@ -1,11 +1,11 @@
 # Training Configuration
 
-This documentation explains how to configure arguments for the training process. Several pre-defined training examples using specific algorithms can be found in the `example_train/algorithm` directory. You can create a new training configuration based on these existing examples.
+This documentation explains how to configure arguments for the training process. Several pre-defined training examples using specific algorithms can be found in the `example_train/algorithm` directory. These examples can serve as a reference for creating a new training configuration based on your requirements.
 
 GOPS use the `argparse` package to pass and parse arguments. These arguments will be passed to ```init_args() ``` function in `gops/utils/init_args.py` to create corresponding components such like samplers or algorithms.
 
 :::{important}
-Please note that some arguments are interdependent. Change them separately may cause errors or incorrect results. **Please read this documentation carefully  before making any change.** 
+Please note that certain arguments are interdependent, and modifying them separately may result in errors or inaccurate results. **Please read this documentation carefully  before making any change.** 
 ::: 
 
 
@@ -68,7 +68,7 @@ Basic and extra parameters for algorithm.
 - `policy_learning_rate` (float): learning rate of policy iteration
 
 :::{note}
-For some RL algorithms, additional parameters need to be set. Please refer to the Refer to the `algorithm` module for detailed information.
+For some RL algorithms, additional parameters need to be set. Please refer to the `algorithm` module for detailed information.
 :::
 
 Take DSAC as an example:

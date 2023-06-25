@@ -1,13 +1,13 @@
 # Model Predictive Control (MPC) Module
 
 The MPC method is implemented in GOPS to offer a baseline for comparing different algorithms, which offers the following features:
-- nonlinear model predictive control
-- support for environment models implemented in PyTorch
-- support for two solving methods: direct collocation and direct shooting
-- user-assigned control interval for move blocking strategy
-- support for passing user-defined functions as terminal cost (including neural networks)
-- specifiable discounting factor that enables a unified problem formulation with RL community
-- flexible optimization options for tuning
+- Nonlinear model predictive control
+- Support for environment models implemented in PyTorch
+- Support for two solving methods: direct collocation and direct shooting
+- User-assigned control interval for move blocking strategy
+- Support for passing user-defined functions as terminal cost (including neural networks)
+- Specifiable discounting factor that enables a unified problem formulation with RL community
+- Flexible optimization options for tuning
 
 
 We adopt [IPOPT (Interior Point Optimizer)](https://coin-or.github.io/Ipopt), an open source software package for large-scale nonlinear optimization, to solve the nonlinear programming problem constructed at each timestep.
@@ -16,7 +16,7 @@ This page illustrates the meaning of the parameters for instantiating a `gops.sy
 
 ## Parameters
 
-- `model` (`gops.env.env_ocp.pyth_base_model.PythBaseModel`): model of the environment to work on
+- `model` (`gops.env.env_ocp.pyth_base_model.PythBaseModel`): Model of the environment to work on
 - `num_pred_step` (int): Total steps of prediction, specifying how far to look into the future.
 - `ctrl_interval` (Optional[int]): Optimal control inputs are computed every `ctrl_interval` steps. For example, if `num_pred_step` equals 10, and `ctrl_interval` equals 2, then control inputs will be computed at timestep 0, 2, 4, 6 and 8. Control inputs at rest timesteps are set in a zero-order holder manner. Default to `1`.
 :::{note}
