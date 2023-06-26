@@ -10,7 +10,7 @@ python:
   install:
     - requirements: requirements.txt
     - method: pip
-      path: .
+      path: ./docs/souce
 
 build:
   os: ubuntu-22.04
