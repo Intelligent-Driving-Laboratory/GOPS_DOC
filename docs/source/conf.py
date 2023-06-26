@@ -39,3 +39,9 @@ html_logo = 'figures&videos/GOPS_LOGO.png'
 html_static_path = ['_static']
 html_css_files = ['custom.css']
 
+
+latex_engine = 'xelatex'
+latex_elements = {
+    'papersize': 'a4paper',
+    'pointsize': '11pt',
+}
