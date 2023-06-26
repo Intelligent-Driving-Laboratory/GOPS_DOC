@@ -107,9 +107,7 @@ celerybeat.pid
 # Environments
 .env
 .venv
-env/
 venv/
-ENV/
 env.bak/
 venv.bak/
 
@@ -149,10 +147,6 @@ docs/source/plot_benchmark/result_0419
 code/plot_benchmark
 *.zip
 *.rar
-docs/source/gops/apprfunc
-docs/source/gops/create_pkg
-docs/source/gops/sys_simulator
-docs/source/gops/trainer
-docs/source/gops/utils
+
 
 
