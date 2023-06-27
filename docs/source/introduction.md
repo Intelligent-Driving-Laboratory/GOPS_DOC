@@ -104,7 +104,7 @@ The history versions of GOPS are listed as follows:
 
 | Version  |Download URL    | New Features |
 | ----        |    ---    |---    |
-| v1.1.0 |[https://github.com/<br>Intelligent-Driving-Laboratory/<br>GOPS/archive/refs/tags/v1.1.0.zip](https://github.com/Intelligent-Driving-Laboratory/GOPS/archive/refs/tags/v1.1.0.zip)| 1. Add industrial Optimal Control Environments. <br> 2. Add sys_simulator module for testing trained policy. <br> 3. Intergrate MPC Solver serving as a baseline.|
+| v1.1.0 |[Github](https://github.com/Intelligent-Driving-Laboratory/GOPS/archive/refs/tags/v1.1.0.zip)<br> [Tsinghua Cloud](https://cloud.tsinghua.edu.cn/f/8eb504937b0847eca4d1/dl=1)| 1. Add industrial Optimal Control Environments. <br> 2. Add sys_simulator module for testing trained policy. <br> 3. Intergrate MPC Solver serving as a baseline.|
 
 
 ## Copyright
