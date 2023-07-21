@@ -142,8 +142,10 @@ docs/build/
 docs/source/code/
 docs/source/plot_benchmark/source_data/
 docs/source/plot_benchmark/source_data_run2/
+docs/source/plot_benchmark/source_data_run3/
 docs/source/plot_benchmark/mujoco_curve/
 docs/source/plot_benchmark/result_0419
+docs/source/plot_benchmark/result_0619
 code/plot_benchmark
 *.zip
 *.rar

@@ -98,7 +98,7 @@ S Eben Li. Reinforcement Learning for Sequential Decision and Optimal Control. S
 
 
 ## Download GOPS
-You can download the newest version of GOPS from [this page](https://github.com/Intelligent-Driving-Laboratory/GOPS/releases).
+You can download the newest version of GOPS from [https://github.com/Intelligent-Driving-Laboratory/GOPS](https://github.com/Intelligent-Driving-Laboratory/GOPS).
 
 The history versions of GOPS are listed as follows:
 

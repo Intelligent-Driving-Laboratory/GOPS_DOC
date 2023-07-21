@@ -1,8 +1,8 @@
 import os
 import shutil
 
-src_dir = 'result_0419'
-dst_dir = 'source_data_run2'
+src_dir = 'result_0619'
+dst_dir = 'source_data_run3'
 
 for env in os.listdir(src_dir):
     env_path = os.path.join(src_dir, env)
@@ -11,7 +11,7 @@ for env in os.listdir(src_dir):
             algorithm_path = os.path.join(env_path, algorithm)
             if os.path.isdir(algorithm_path):
                 new_algorithm = algorithm[:-14] # remove yymmdd from algorithm folder name
-                if new_algorithm != 'DSAC5':
+                if new_algorithm != 'DSAC2':
                     continue
                 new_algorithm_path = os.path.join(dst_dir, env, new_algorithm)
                 os.makedirs(new_algorithm_path, exist_ok=True)
