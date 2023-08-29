@@ -125,7 +125,7 @@ Dr. Li is now the tenured professor of Tsinghua University, and he is leading In
 
 [Jingliang Duan](https://www.researchgate.net/profile/Jingliang-Duan): Co-leader of GOPS.
 
-Dr. Duan is currently an associate professor in the School of Mechanical Engineering, University of Science and Technology Beijing, China. His research interests include reinforcement learning, optimal control, and self-driving decision-marking.
+Dr. Duan is currently an associate professor in the School of Mechanical Engineering, University of Science and Technology Beijing, China. His research interests include reinforcement learning, optimal control, and self-driving decision-making.
 
 **Student Leader:**
 

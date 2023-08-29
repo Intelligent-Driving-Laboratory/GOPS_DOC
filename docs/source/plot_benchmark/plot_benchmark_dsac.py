@@ -5,7 +5,7 @@ import altair as alt
 
 envs = ['gym_ant', 'gym_halfcheetah', 'gym_hopper', 'gym_humanoid', 'gym_inverteddoublependulum','gym_invertedpendulum','gym_reacher', 'gym_swimmer', 'gym_walker2d']
 # Convert the data to JSON format
-with open('data_run2.json') as f:
+with open('data_run3.json') as f:
     data_json = json.load(fp=f)
 
 data_df = pd.DataFrame(data_json)
@@ -58,4 +58,4 @@ chart = chart.configure_axisX(tickCount=10)
 #     ).properties(width=400, height=300)
     
 # Display the chart
-chart.save('benchmark_run2.html')
+chart.save('benchmark_run3_1.html')
