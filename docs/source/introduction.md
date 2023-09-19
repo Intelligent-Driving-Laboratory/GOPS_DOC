@@ -106,6 +106,15 @@ The history versions of GOPS are listed as follows:
 | ----        |    ---    |---    |
 | v1.1.0 |[Github](https://github.com/Intelligent-Driving-Laboratory/GOPS/archive/refs/tags/v1.1.0.zip)<br> [Tsinghua Cloud](https://cloud.tsinghua.edu.cn/f/8eb504937b0847eca4d1/?dl=1)| 1. Add industrial Optimal Control Environments. <br> 2. Add sys_simulator module for testing trained policy. <br> 3. Intergrate MPC Solver serving as a baseline.|
 
+## WeChat Group
+In order to make it easier for everyone to use GOPS and build a good community, we have established a WeChat group for GOPS users and invite interested users to join by scanning the QR code below.
+Developers will answer questions for users in the group when using GOPS, and will fix problems in GOPS based on user feedback. In addition, the release of a new version of GOPS will also be notified in the group.
+
+Thanks to all users for your support of GOPS and to all developers for your contributions to GOPS. Let's work together to make GOPS a valuable, easy-to-use, and popular software!
+
+<div align=center>
+<img src=https://github.com/yangyujie-jack/GOPS/assets/69301887/6f73adbf-9e7a-4205-affa-e0f19ccf0eda width="40%">
+</div>
 
 ## Copyright
 GOPS is released under the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0).
