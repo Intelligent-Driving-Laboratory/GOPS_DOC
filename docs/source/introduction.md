@@ -113,7 +113,7 @@ Developers will answer questions for users in the group when using GOPS, and wil
 Thanks to all users for your support of GOPS and to all developers for your contributions to GOPS. Let's work together to make GOPS a valuable, easy-to-use, and popular software!
 
 <div align=center>
-<img src=https://github.com/Intelligent-Driving-Laboratory/GOPS_DOC/blob/master/docs/source/figures%26videos/QR_code.jpg width="40%">
+<img src=https://github.com/Intelligent-Driving-Laboratory/GOPS_DOC/blob/master/docs/source/figures&videos/QR_code.jpg?raw=true width="40%">
 </div>
 
 ## Copyright
