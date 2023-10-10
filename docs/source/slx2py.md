@@ -199,6 +199,8 @@ If you need some learning materials about modeling and code generation, see [Ref
 
 To support gym environment generation, see Gym-like environment.
 
+A example model `example_model.slx` is available [here](./assets/example_model.slx), with some extra tips and best practices annotated in the model. You can download and try it out.
+
 ### Tunable parameter
 
 The computer execution model is inherently deterministic, with any randomness relying on at least one external source. In order to introduce environmental randomness, we must make certain parameters tunable. Therefore, model parameters such as physical parameters, random seed, and initial state of integrator must be created with the following two steps.
