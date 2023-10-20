@@ -199,7 +199,7 @@ If you need some learning materials about modeling and code generation, see [Ref
 
 To support gym environment generation, see Gym-like environment.
 
-A example model `example_model.slx` is available [here](./assets/example_model.slx), with some extra tips and best practices annotated in the model. You can download and try it out.
+An example model `example_model.slx` and its slxpy project folder `example_project` are available [here](./assets/example.zip), with some extra tips and best practices annotated in the model. You can download and try it out.
 
 ### Tunable parameter
 
